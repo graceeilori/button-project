@@ -1,0 +1,82 @@
+:root {
+  --system-size: 360px;
+
+  --center-size: 90px;
+  --planet-size: 44px;
+
+  --center-color: #facc15;
+  --planet-color: #60a5fa;
+  --orbit-color: rgba(255, 255, 255, 0.4);
+
+  --text-color: #0f172a;
+}
+
+.solar-system {
+
+  position: relative;
+  width: var(--system-size);
+  height: var(--system-size);
+  margin: 2rem auto;
+}
+
+/* Center planet */
+.center-planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--center-size);
+  height: var(--center-size);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--center-color);
+  color: var(--text-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* Orbit ring */
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px dotted var(--orbit-color);
+}
+
+/* Planet buttons */
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--planet-size);
+  height: var(--planet-size);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: var(--planet-color);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Hard-coded positions */
+.planet-0 { transform: translate(-50%, -50%) translate(0, -130px); }   /* top */
+.planet-1 { transform: translate(-50%, -50%) translate(130px, 0); }    /* right */
+.planet-2 { transform: translate(-50%, -50%) translate(0, 130px); }     /* bottom */
+.planet-3 { transform: translate(-50%, -50%) translate(-130px, 0); }    /* left */
+
+/* Optional hover polish */
+.planet:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05) translate(var(--tx, 0), var(--ty, 0));
+}
+
+
+/*on hover, shadow, on click change shadow color, deselect brings back to 
