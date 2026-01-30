@@ -29,7 +29,7 @@ export default function SolarSystem() {
         ]}
         />
       <Planet 
-        className="planet planet-bottom" 
+        className="planet planet-bottom padded-planet" 
         planetImg="/grace_icons/Planet.png"
         moons={[
           "/jj_icons/oven.png",
