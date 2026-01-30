@@ -14,7 +14,7 @@
 .solar-system {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 140vh;
 }
 
 
@@ -23,8 +23,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: var(--center-color);
@@ -40,8 +40,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 600px;
-  height: 600px;
+  width: 140px;
+  height: 140px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   border: 2px dotted var(--orbit-color);
@@ -50,13 +50,13 @@
 /* Planet buttons */
 .planet {
   position: absolute;
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
 }
 
 /* Hard-coded positions */
 .planet-top {
-  top: 7%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -68,7 +68,7 @@
 }
 
 .planet-bottom {
-  bottom: 7%;
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -106,6 +106,7 @@
 }
 
 
+
 .moons {
   position: absolute;
   inset: 0;
@@ -113,15 +114,26 @@
 
 .moon {
   position: absolute;
-  width: 26px;
-  height: 26px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: #94a3b8;
 }
 
+.moon .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moon .circle img {
+  width: 80%;
+  height: 80%;
+}
+
 /* Top */
 .moon-0 {
-  top: -45px;
+  top: -70px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -129,13 +141,13 @@
 /* Right */
 .moon-1 {
   top: 50%;
-  right: -45px;
+  right: -70px;
   transform: translateY(-50%);
 }
 
 /* Bottom */
 .moon-2 {
-  bottom: -45px;
+  bottom: -70px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -143,7 +155,7 @@
 /* Left */
 .moon-3 {
   top: 50%;
-  left: -45px;
+  left: -70px;
   transform: translateY(-50%);
 }
 

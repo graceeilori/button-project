@@ -3,7 +3,7 @@ import "./SolarSystem.css";
 export default function SolarSystem() {
   return (
     <div className="solar-system">
-      <div className="sun">☀</div>
+      <div className="sun"></div>
 
       <Planet
        className="planet planet-top" 
@@ -21,7 +21,7 @@ export default function SolarSystem() {
         moons={[
           "/chris_icons/catalog-magazine.png",
           "/chris_icons/gun-shooting.svg",
-          "/chris_icons/heart.svg",
+          "/jj_icons/hearts.png",
           "/chris_icons/snowboarding.svg",
         ]}
         />
@@ -29,8 +29,8 @@ export default function SolarSystem() {
         className="planet planet-bottom" 
         planetImg="/grace_icons/Planet.png"
         moons={[
-          "/grace_icons/oven.png",
-          "/grace_icons/gun.png",
+          "/jj_icons/oven.png",
+          "/chris_icons/gun-shooting.svg",
           "/grace_icons/scd.png",
           "/grace_icons/piano.png",
         ]}
