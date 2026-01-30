@@ -1,4 +1,7 @@
+'use client';
+
 import "./SolarSystem.css";
+import { useState } from "react";
 
 export default function SolarSystem() {
   return (
@@ -56,7 +59,16 @@ type PlanetProps = {
 };
 
 function Planet({ className, planetImg, moons }: PlanetProps) {
+   const [selected, setSelected] = useState(false);
   return (
+     <button
+      type="button"
+      className={`${className} planet-button ${
+        selected ? "selected" : ""
+      }`}
+      onClick={() => setSelected(!selected)}
+      aria-pressed={selected}
+    >
     <div className={className}>
       {/* Planet core */}
       <div className="planet-core circle">
@@ -79,5 +91,6 @@ function Planet({ className, planetImg, moons }: PlanetProps) {
         </div>
       </div>
     </div>
+    </button>
   );
 }

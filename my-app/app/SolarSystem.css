@@ -54,6 +54,23 @@
   height: 140px;
 }
 
+.planet-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+}
+
+
+.planet-button:hover .planet-core {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.4);
+}
+
+.planet-button.selected .planet-core {
+  box-shadow: 0 0 26px rgba(99, 102, 241, 0.9);
+}
+
 /* Hard-coded positions */
 .planet-top {
   top: 15%;
@@ -110,6 +127,7 @@
 .moons {
   position: absolute;
   inset: 0;
+  pointer-events: none;
 }
 
 .moon {
