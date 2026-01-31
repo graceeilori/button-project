@@ -3,14 +3,6 @@
 import Image from 'next/image';
 import "../app/background.css";
 
-const STAR_ASSETS = [
-    '/assets/four_pointed_star_orange.svg',
-    '/assets/four_pointed_star_red.svg',
-    '/assets/regular_star_small.svg',
-    '/assets/regular_star.svg',
-    '/assets/tiny_star.svg',
-];
-
 export default function StarBackground() {
     return (
         <div className="fixed inset-0 pointer-events-none">
