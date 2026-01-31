@@ -11,10 +11,10 @@
   --text-color: #0f172a;
 }
 
-.solar-system {
+.page {
   position: relative;
   width: 100vw;
-  height: 140vh;
+  min-height: 100vh;
 }
 
 
@@ -35,23 +35,11 @@
   justify-content: center;
 }
 
-/* Orbit ring */
-.orbit-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 140px;
-  height: 140px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 2px dotted var(--orbit-color);
-}
-
 /* Planet buttons */
 .planet {
   position: absolute;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
 }
 
 .planet-button {

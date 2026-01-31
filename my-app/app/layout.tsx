@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Jersey_10, Space_Mono } from "next/font/google";
 import "./globals.css";
+import SpaceBackground from "../components/SpaceBackground";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jersey10 = Jersey_10({
+  variable: "--font-jersey",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -25,8 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jersey10.variable} ${spaceMono.variable} antialiased`}
       >
+        <SpaceBackground />
         {children}
       </body>
     </html>
