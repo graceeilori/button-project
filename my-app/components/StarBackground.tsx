@@ -1,19 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-
-const STAR_COUNT = 50;
-
-type StarType = {
-    id: number;
-    src: string;
-    top: number;
-    left: number;
-    size: number;
-    delay: number;
-    duration: number;
-};
+import "../app/background.css";
 
 const STAR_ASSETS = [
     '/assets/four_pointed_star_orange.svg',
@@ -24,82 +12,89 @@ const STAR_ASSETS = [
 ];
 
 export default function StarBackground() {
-    const [stars, setStars] = useState<StarType[]>([]);
-
-    useEffect(() => {
-        const newStars = Array.from({ length: STAR_COUNT }).map((_, i) => ({
-            id: i,
-            src: STAR_ASSETS[Math.floor(Math.random() * STAR_ASSETS.length)],
-            top: Math.random() * 100,
-            left: Math.random() * 100,
-            size: Math.random() * 20 + 10, // 10px to 30px
-            delay: Math.random() * 5,
-            duration: Math.random() * 3 + 2,
-        }));
-        setStars(newStars);
-    }, []);
-
     return (
-        <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-black">
-            {stars.map((star) => (
-                <div
-                    key={star.id}
-                    className="absolute animate-twinkle"
-                    style={{
-                        top: `${star.top}%`,
-                        left: `${star.left}%`,
-                        width: star.size,
-                        height: star.size,
-                        animationDelay: `${star.delay}s`,
-                        animationDuration: `${star.duration}s`,
-                    }}
-                >
-                    <Image
-                        src={star.src}
-                        alt="star"
-                        width={star.size}
-                        height={star.size}
-                        className="w-full h-full"
-                    />
-                </div>
-            ))}
-            {/* Shooting Star */}
-            <div
-                className="absolute animate-shooting-star"
-                style={{
-                    top: '20%',
-                    left: '100%',
-                    width: 100,
-                    height: 100,
-                }}
-            >
-                <Image
-                    src="/assets/shooting_star.svg"
-                    alt="shooting star"
-                    width={100}
-                    height={100}
-                    className="w-full h-full"
-                />
-            </div>
-            <div
-                className="absolute animate-shooting-star"
-                style={{
-                    top: '60%',
-                    left: '100%',
-                    width: 80,
-                    height: 80,
-                    animationDelay: '4s',
-                    animationDuration: '3s'
-                }}
-            >
-                <Image
-                    src="/assets/shooting_star.svg"
-                    alt="shooting star"
-                    width={80}
-                    height={80}
-                    className="w-full h-full"
-                />
-            </div>
+        <div className="fixed inset-0 pointer-events-none">
+            <div className="tiny-stars"></div>
+            {/* Shooting stars */}
+            <Image
+                src="/assets/shooting_star.svg"
+                alt="shooting star"
+                width={115}
+                height={115}
+                className="absolute -top-[10%] right-[10%] shooting-star-1"
+            />
+            <Image
+                src="/assets/shooting_star.svg"
+                alt="shooting star"
+                width={130}
+                height={130}
+                className="absolute top-[5%] -right-[5%] shooting-star-2"
+            />
+            <Image
+                src="/assets/shooting_star.svg"
+                alt="shooting star"
+                width={160}
+                height={160}
+                className="absolute -top-[15%] right-[40%] shooting-star-3"
+            />
+            <Image
+                src="/assets/shooting_star.svg"
+                alt="shooting star"
+                width={80}
+                height={80}
+                className="absolute top-[45%] -right-[8%] shooting-star-4"
+            />
+            <Image
+                src="/assets/shooting_star.svg"
+                alt="shooting star"
+                width={80}
+                height={80}
+                className="absolute -top-[5%] left-[10%] shooting-star-5"
+            />
+
+            {/* Four-pointed twinkling stars */}
+            <Image
+                src="/assets/four_pointed_star_orange.svg"
+                alt="star"
+                width={20}
+                height={20}
+                className="absolute top-[12%] right-[25%] twinkle-star-1"
+            />
+            <Image
+                src="/assets/four_pointed_star_red.svg"
+                alt="star"
+                width={18}
+                height={18}
+                className="absolute top-[35%] left-[8%] twinkle-star-2"
+            />
+            <Image
+                src="/assets/four_pointed_star_orange.svg"
+                alt="star"
+                width={18}
+                height={18}
+                className="absolute bottom-[20%] right-[12%] twinkle-star-3"
+            />
+            <Image
+                src="/assets/four_pointed_star_red.svg"
+                alt="star"
+                width={16}
+                height={16}
+                className="absolute top-[60%] right-[45%] twinkle-star-4"
+            />
+            <Image
+                src="/assets/four_pointed_star_orange.svg"
+                alt="star"
+                width={16}
+                height={16}
+                className="absolute bottom-[40%] left-[20%] twinkle-star-5"
+            />
+            <Image
+                src="/assets/four_pointed_star_red.svg"
+                alt="star"
+                width={16}
+                height={16}
+                className="absolute bottom-[10%] right-[35%] twinkle-star-6"
+            />
         </div>
     );
 }
