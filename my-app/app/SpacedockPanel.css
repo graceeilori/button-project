@@ -1,0 +1,229 @@
+/* ========== SPACEDOCK PANEL ========== */
+
+.spacedock-panel {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 380px;
+    min-height: 400px;
+    padding: 32px;
+    z-index: 100;
+
+    /* Hexagonal with Beveled Corners */
+    clip-path: polygon(25px 0,
+            calc(100% - 25px) 0,
+            100% 25px,
+            100% calc(100% - 25px),
+            calc(100% - 25px) 100%,
+            25px 100%,
+            0 calc(100% - 25px),
+            0 25px);
+
+    /* Background */
+    background: rgba(10, 14, 23, 0.98);
+
+    /* Glowing Border Effect */
+    box-shadow:
+        inset 0 0 60px rgba(10, 14, 23, 0.8),
+        0 0 40px rgba(94, 179, 183, 0.4),
+        0 0 80px rgba(94, 179, 183, 0.2);
+
+    /* Typography */
+    color: #f0f4f8;
+    font-family: var(--font-space-mono, 'Space Mono', monospace);
+}
+
+/* ===== CORNER BRACKETS ===== */
+.corner-bracket {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.corner-bracket.top-left {
+    top: 8px;
+    left: 8px;
+    border-top: 2px solid #5eb3b7;
+    border-left: 2px solid #5eb3b7;
+}
+
+.corner-bracket.top-right {
+    top: 8px;
+    right: 8px;
+    border-top: 2px solid #5eb3b7;
+    border-right: 2px solid #5eb3b7;
+}
+
+.corner-bracket.bottom-left {
+    bottom: 8px;
+    left: 8px;
+    border-bottom: 2px solid #5eb3b7;
+    border-left: 2px solid #5eb3b7;
+}
+
+.corner-bracket.bottom-right {
+    bottom: 8px;
+    right: 8px;
+    border-bottom: 2px solid #5eb3b7;
+    border-right: 2px solid #5eb3b7;
+}
+
+/* ===== STATUS INDICATORS ===== */
+.status-indicator {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #5eb3b7;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.top-left .status-indicator {
+    top: 4px;
+    left: 4px;
+}
+
+.top-right .status-indicator {
+    top: 4px;
+    right: 4px;
+}
+
+.bottom-left .status-indicator {
+    bottom: 4px;
+    left: 4px;
+}
+
+.bottom-right .status-indicator {
+    bottom: 4px;
+    right: 4px;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 4px #5eb3b7;
+    }
+
+    50% {
+        opacity: 0.5;
+        box-shadow: 0 0 8px #5eb3b7;
+    }
+}
+
+/* ===== SCAN LINES ===== */
+.scan-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(94, 179, 183, 0.03) 2px,
+            rgba(94, 179, 183, 0.03) 4px);
+    animation: scanMove 8s linear infinite;
+}
+
+@keyframes scanMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100px;
+    }
+}
+
+/* ===== HEADER ===== */
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.blinking-arrow {
+    color: #5eb3b7;
+    font-size: 14px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.panel-title {
+    font-family: var(--font-jersey, 'Jersey 20', sans-serif);
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #5eb3b7;
+}
+
+.header-underline {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, #5eb3b7, transparent);
+    animation: underlineGrow 2s ease-out forwards;
+}
+
+@keyframes underlineGrow {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* ===== CLOSE BUTTON ===== */
+.close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background: rgba(10, 14, 23, 0.9);
+    border: 1px solid #5eb3b7;
+    color: #5eb3b7;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    /* Hexagonal shape */
+    clip-path: polygon(15% 0%,
+            85% 0%,
+            100% 50%,
+            85% 100%,
+            15% 100%,
+            0% 50%);
+}
+
+.close-button:hover {
+    background: #5eb3b7;
+    color: #0a0e17;
+}
+
+/* ===== CONTENT ===== */
+.panel-content {
+    position: relative;
+    z-index: 1;
+}
