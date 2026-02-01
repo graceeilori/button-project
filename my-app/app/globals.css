@@ -33,10 +33,23 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  gap: 40px;
+  gap: 64px;
 }
 
 .title {
   font-family: var(--font-jersey), sans-serif;
-  font-size: 3rem;
+  font-weight: 200;
+  font-size: 72px;
+  background: linear-gradient(89deg, #EF7FA9 -2.38%, #CFDBD6 24.05%, #F5E2C2 50.49%, #7FACEF 76.93%, #A080C8 103.36%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title-glow {
+  background: linear-gradient(89deg, rgba(239, 127, 169, 0.50) -2.38%, rgba(207, 219, 214, 0.50) 24.05%, rgba(245, 226, 194, 0.50) 50.49%, rgba(127, 172, 239, 0.50) 76.93%, rgba(160, 128, 200, 0.50) 103.36%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(12px);
 }

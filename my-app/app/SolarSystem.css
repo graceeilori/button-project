@@ -4,6 +4,17 @@
   --center-size: 90px;
   --planet-size: 44px;
 
+  /* Planet size for the large planets */
+  --planet-size: 120px;
+
+  /* Orbit base radii (distance from sun center to orbit line) */
+  --inner-orbit-base: 200px;
+  --outer-orbit-base: 320px;
+
+  /* Actual orbit radii: base + half planet size (so planet center is on orbit line) */
+  --inner-orbit-radius: calc(var(--inner-orbit-base) + var(--planet-size) / 4);
+  --outer-orbit-radius: calc(var(--outer-orbit-base) + var(--planet-size) / 4);
+
   --center-color: #facc15;
   --planet-color: #60a5fa;
   --orbit-color: rgba(255, 255, 255, 0.4);
@@ -19,6 +30,7 @@
 
 
 /* Center planet */
+/* 
 .sun {
   position: absolute;
   top: 50%;
@@ -34,12 +46,25 @@
   align-items: center;
   justify-content: center;
 }
+*/
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
 
 /* Planet buttons */
 .planet {
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: var(--planet-size);
+  height: var(--planet-size);
 }
 
 .planet-button {
@@ -55,33 +80,20 @@
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.4);
 }
 
-.planet-button.selected .planet-core {
-  box-shadow: 0 0 26px rgba(99, 102, 241, 0.9);
+.planet-1.selected .planet-core {
+  box-shadow: 0 0 26px rgba(127, 172, 239, 0.7);
 }
 
-/* Hard-coded positions */
-.planet-top {
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
+.planet-2.selected .planet-core {
+  box-shadow: 0 0 26px rgba(239, 127, 169, 0.7);
 }
 
-.planet-right {
-  top: 50%;
-  right: 25%;
-  transform: translateY(-50%);
+.planet-3.selected .planet-core {
+  box-shadow: 0 0 26px rgba(13, 77, 49, 0.7);
 }
 
-.planet-bottom {
-  bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.planet-left {
-  top: 50%;
-  left: 25%;
-  transform: translateY(-50%);
+.planet-4.selected .planet-core {
+  box-shadow: 0 0 26px rgba(113, 65, 173, 0.7);
 }
 
 .planet-core {
@@ -114,8 +126,6 @@
   height: 100%;
   object-fit: cover;
 }
-
-
 
 .moons {
   position: absolute;
@@ -171,3 +181,97 @@
 }
 
 /*on hover, shadow, on click change shadow color, deselect brings back to */
+
+/* ========== PLANET POSITIONING ========== */
+
+/* Position all planets at center, then animate from there */
+.planet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* INNER ORBIT - Planet 1 (starts at top, 0°) */
+.planet-1 {
+  animation: orbitInner1 45s linear infinite;
+}
+
+@keyframes orbitInner1 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(var(--inner-orbit-radius)) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(var(--inner-orbit-radius)) rotate(-360deg);
+  }
+}
+
+/* INNER ORBIT - Planet 2 (starts at bottom, 180°) */
+.planet-2 {
+  animation: orbitInner2 45s linear infinite;
+}
+
+@keyframes orbitInner2 {
+  from {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(var(--inner-orbit-radius)) rotate(-180deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(540deg) translateX(var(--inner-orbit-radius)) rotate(-540deg);
+  }
+}
+
+/* OUTER ORBIT - Planet 3 (starts at right, 90°) */
+.planet-3 {
+  animation: orbitOuter1 35s linear infinite;
+}
+
+@keyframes orbitOuter1 {
+  from {
+    transform: translate(-50%, -50%) rotate(90deg) translateX(var(--outer-orbit-radius)) rotate(-90deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(450deg) translateX(var(--outer-orbit-radius)) rotate(-450deg);
+  }
+}
+
+/* OUTER ORBIT - Planet 4 (starts at left, 270°) */
+.planet-4 {
+  animation: orbitOuter2 35s linear infinite;
+}
+
+@keyframes orbitOuter2 {
+  from {
+    transform: translate(-50%, -50%) rotate(270deg) translateX(var(--outer-orbit-radius)) rotate(-270deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(630deg) translateX(var(--outer-orbit-radius)) rotate(-630deg);
+  }
+}
+
+
+/* Pause orbit animation when orbit is selected */
+.planet.paused {
+  animation-play-state: paused;
+}
+
+/* Visual glow on the clicked planet */
+/* .planet.selected is already styled in .planet-button.selected above */
+
+/* Outer orbit gradient ring when both planets selected */
+.outer-orbit-gradient {
+  background: linear-gradient(230deg, #AF90D5 -3.76%, #9BC0CA 50.26%, #7CE9B9 104.28%);
+  mask: radial-gradient(transparent 48%, black 48%, black 50%, transparent 50%);
+  -webkit-mask: radial-gradient(transparent 48%, black 48%, black 50%, transparent 50%);
+}
+
+/* Outer orbit glow effect when both planets selected */
+.outer-orbit-glow {
+  background: linear-gradient(230deg, #7946B9 -3.76%, #79ABB9 50.26%, #25DA8B 104.28%);
+  mask: radial-gradient(transparent 46%, black 46%, black 52%, transparent 52%);
+  -webkit-mask: radial-gradient(transparent 46%, black 46%, black 52%, transparent 52%);
+  filter: blur(8px);
+}
