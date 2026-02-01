@@ -71,7 +71,7 @@ export default function StarBackground() {
                 alt="star"
                 width={16}
                 height={16}
-                className="absolute top-[60%] right-[45%] twinkle-star-4"
+                className="absolute top-[45%] right-[45%] twinkle-star-4"
             />
             <Image
                 src="/assets/four_pointed_star_orange.svg"
