@@ -37,22 +37,22 @@ export function Planet({
       <div className="planet-core circle">
         <img src={planetImg} alt="Planet" />
       </div>
-      {/* MOONS - commented out for now
       <div className="moons">
-        <div className="moon moon-0 circle">
-          <img src={moons[0]} alt="" />
+        {/* Visual orbit ring for moons */}
+        <div className="planet_orbit"></div>
+        <div className="moon moon-0">
+          <img src={moons[0]} alt="" width={24} height={24} />
         </div>
-        <div className="moon moon-1 circle">
-          <img src={moons[1]} alt="" />
+        <div className="moon moon-1">
+          <img src={moons[1]} alt="" width={24} height={24} />
         </div>
-        <div className="moon moon-2 circle">
-          <img src={moons[2]} alt="" />
+        <div className="moon moon-2">
+          <img src={moons[2]} alt="" width={24} height={24} />
         </div>
-        <div className="moon moon-3 circle">
-          <img src={moons[3]} alt="" />
+        <div className="moon moon-3">
+          <img src={moons[3]} alt="" width={24} height={24} />
         </div>
       </div>
-      */}
     </button>
   );
 }

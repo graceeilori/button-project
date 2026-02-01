@@ -4,6 +4,7 @@ import "./SolarSystem.css";
 import { useState } from "react";
 import Image from 'next/image';
 import { Planet } from "./planetComponent";
+import { SpacedockPanel } from "./SpacedockPanel";
 
 export default function SolarSystem() {
   // Track which planets are selected (multiple selection)
@@ -40,65 +41,60 @@ export default function SolarSystem() {
             <div className="title text-center">A FAMILY OF BUTTONS</div>
             <div className="title title-glow text-center absolute inset-0">A FAMILY OF BUTTONS</div>
           </div>
-          <div className="text-center w-[600px] text-[#E6B86A]">Click a planet to explore individual personality • Select multiple planets to see what makes them similar or different</div>
+          <div className="text-center w-[600px] text-[#E6B86A]">Click a planet to explore individual personality • Select multiple planets to see what makes us similar or different</div>
         </div>
         {/* Orbits */}
         <div className="relative w-[720px] h-[720px]">
           {/* Outer orbit ring */}
           <div className="w-[720px] h-[720px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            {outerOrbitBothSelected && (
-              <>
-                <div className="w-full h-full absolute inset-0 rounded-full outline outline-4 outline-offset-[-2px] outline-[#79ABB9] blur-sm"></div>
-                <Image
-                  src="/assets/outer_orbit_selected.svg"
-                  alt="orbit"
-                  width={720}
-                  height={720}
-                  className="absolute inset-0"
-                />
-              </>
-            )}
-            {/* Default state */}
-            {!outerOrbitBothSelected && (
-              <>
-                <div className="w-full h-full absolute inset-0 rounded-full outline outline-4 outline-offset-[-2px] outline-white blur-sm"></div>
-                <Image
-                  src="/assets/orbit_large.svg"
-                  alt="orbit"
-                  width={720}
-                  height={720}
-                  className="absolute inset-0"
-                />
-              </>
-            )}
+            {/* Default state - fades out when selected */}
+            <div className={`absolute inset-0 transition-opacity duration-300 ${outerOrbitBothSelected ? 'opacity-0' : 'opacity-100'}`}>
+              <div className="w-full h-full absolute inset-0 rounded-full outline outline-4 outline-offset-[-2px] outline-white blur-sm"></div>
+              <Image
+                src="/assets/orbit_large.svg"
+                alt="orbit"
+                width={720}
+                height={720}
+                className="absolute inset-0"
+              />
+            </div>
+            {/* Selected state - fades in when selected */}
+            <div className={`absolute inset-0 transition-opacity duration-300 ${outerOrbitBothSelected ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="w-full h-full absolute inset-0 rounded-full outline outline-4 outline-offset-[-2px] outline-[#79ABB9] blur-sm"></div>
+              <Image
+                src="/assets/outer_orbit_selected.svg"
+                alt="orbit"
+                width={720}
+                height={720}
+                className="absolute inset-0"
+              />
+            </div>
           </div>
 
           {/* Inner orbit ring */}
-          <div className="w-[480px] h-[480px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            {innerOrbitBothSelected && (
-              <>
-                <div className="w-full h-full absolute inset-0 rounded-full outline outline-4 outline-offset-[-2px] outline-[#B393CB] blur-sm"></div>
-                <Image
-                  src="/assets/inner_orbit_selected.svg"
-                  alt="orbit"
-                  width={480}
-                  height={480}
-                  className="absolute inset-0"
-                />
-              </>
-            )}
-            {!innerOrbitBothSelected && (
-              <>
-                <div className="w-full h-full absolute inset-0 rounded-full outline outline-4 outline-offset-[-2px] outline-white blur-sm"></div>
-                <Image
-                  src="/assets/orbit_large.svg"
-                  alt="orbit"
-                  width={480}
-                  height={480}
-                  className="absolute inset-0"
-                />
-              </>
-            )}
+          <div className="w-[400px] h-[400px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            {/* Default state - fades out when selected */}
+            <div className={`absolute inset-0 transition-opacity duration-300 ${innerOrbitBothSelected ? 'opacity-0' : 'opacity-100'}`}>
+              <div className="w-full h-full absolute inset-0 rounded-full outline outline-4 outline-offset-[-2px] outline-white blur-sm"></div>
+              <Image
+                src="/assets/orbit_large.svg"
+                alt="orbit"
+                width={400}
+                height={400}
+                className="absolute inset-0"
+              />
+            </div>
+            {/* Selected state - fades in when selected */}
+            <div className={`absolute inset-0 transition-opacity duration-300 ${innerOrbitBothSelected ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="w-full h-full absolute inset-0 rounded-full outline outline-4 outline-offset-[-2px] outline-[#B393CB] blur-sm"></div>
+              <Image
+                src="/assets/inner_orbit_selected.svg"
+                alt="orbit"
+                width={400}
+                height={400}
+                className="absolute inset-0"
+              />
+            </div>
           </div>
 
           {/* Sun at center with glow layers */}
@@ -175,6 +171,20 @@ export default function SolarSystem() {
           />
         </div>
       </div>
+
+      {/* Spacedock Panel - appears when any planet is selected */}
+      <SpacedockPanel
+        isOpen={selectedCount > 0}
+        onClose={() => setSelectedPlanets(new Set())}
+        title={selectedCount === 1 ? "PERSONALITY DATA" : "COMPARISON MODE"}
+      >
+        <div style={{ fontFamily: 'var(--font-space-mono)' }}>
+          {selectedPlanets.has(1) && <p>• Chris selected</p>}
+          {selectedPlanets.has(2) && <p>• Grace selected</p>}
+          {selectedPlanets.has(3) && <p>• Caleb selected</p>}
+          {selectedPlanets.has(4) && <p>• JJ selected</p>}
+        </div>
+      </SpacedockPanel>
     </div>
   );
 }

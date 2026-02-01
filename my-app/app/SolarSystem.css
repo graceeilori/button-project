@@ -2,18 +2,21 @@
   --system-size: 360px;
 
   --center-size: 90px;
-  --planet-size: 44px;
 
   /* Planet size for the large planets */
-  --planet-size: 120px;
+  --planet-size: 104px;
 
   /* Orbit base radii (distance from sun center to orbit line) */
-  --inner-orbit-base: 200px;
+  --inner-orbit-base: 160px;
   --outer-orbit-base: 320px;
 
   /* Actual orbit radii: base + half planet size (so planet center is on orbit line) */
   --inner-orbit-radius: calc(var(--inner-orbit-base) + var(--planet-size) / 4);
   --outer-orbit-radius: calc(var(--outer-orbit-base) + var(--planet-size) / 4);
+
+  /* Moon orbit settings */
+  --moon-size: 32px;
+  --moon-orbit-radius: 72px;
 
   --center-color: #facc15;
   --planet-color: #60a5fa;
@@ -133,51 +136,109 @@
   pointer-events: none;
 }
 
-.moon {
+/* Planet orbit ring (visual circle around planet for moons) */
+.planet_orbit {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: calc(var(--moon-orbit-radius) * 2);
+  height: calc(var(--moon-orbit-radius) * 2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
 }
 
-.moon .circle {
+.moon {
+  position: absolute;
+  width: var(--moon-size);
+  height: var(--moon-size);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.moon .circle img {
-  width: 80%;
-  height: 80%;
+/* Planet 1 (Chris) */
+.planet-1 .moon {
+  background: #FCFCFC;
 }
 
-/* Top */
+/* Planet 2 (Grace) */
+.planet-2 .moon {
+  background: #D0C0E4;
+}
+
+/* Planet 3 (Caleb) */
+.planet-3 .moon {
+  background: #F5F9FF;
+}
+
+/* Planet 4 (JJ) */
+.planet-4 .moon {
+  background: #CFDBD6;
+}
+
+/* Moon 0: starts at top (0°) */
 .moon-0 {
-  top: -70px;
-  left: 50%;
-  transform: translateX(-50%);
+  animation: moonOrbit0 10s linear infinite;
 }
 
-/* Right */
+@keyframes moonOrbit0 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(var(--moon-orbit-radius)) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(var(--moon-orbit-radius)) rotate(-360deg);
+  }
+}
+
+/* Moon 1: starts at right (90°) */
 .moon-1 {
-  top: 50%;
-  right: -70px;
-  transform: translateY(-50%);
+  animation: moonOrbit1 10s linear infinite;
 }
 
-/* Bottom */
+@keyframes moonOrbit1 {
+  from {
+    transform: translate(-50%, -50%) rotate(90deg) translateX(var(--moon-orbit-radius)) rotate(-90deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(450deg) translateX(var(--moon-orbit-radius)) rotate(-450deg);
+  }
+}
+
+/* Moon 2: starts at bottom (180°) */
 .moon-2 {
-  bottom: -70px;
-  left: 50%;
-  transform: translateX(-50%);
+  animation: moonOrbit2 10s linear infinite;
 }
 
-/* Left */
+@keyframes moonOrbit2 {
+  from {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(var(--moon-orbit-radius)) rotate(-180deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(540deg) translateX(var(--moon-orbit-radius)) rotate(-540deg);
+  }
+}
+
+/* Moon 3: starts at left (270°) */
 .moon-3 {
-  top: 50%;
-  left: -70px;
-  transform: translateY(-50%);
+  animation: moonOrbit3 10s linear infinite;
+}
+
+@keyframes moonOrbit3 {
+  from {
+    transform: translate(-50%, -50%) rotate(270deg) translateX(var(--moon-orbit-radius)) rotate(-270deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(630deg) translateX(var(--moon-orbit-radius)) rotate(-630deg);
+  }
 }
 
 /*on hover, shadow, on click change shadow color, deselect brings back to */
