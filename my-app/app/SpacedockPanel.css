@@ -321,3 +321,16 @@
   color: #f1c94a;
   box-shadow: 0 0 18px rgba(241,201,74,0.15), 0 0 6px rgba(241,201,74,0.06) inset;
 }
+
+/* moon glow */
+.moon--highlighted {
+  transition: box-shadow 180ms ease, transform 140ms ease, filter 160ms ease;
+  z-index: 30;
+}
+
+.moon--highlighted img {
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(241,201,74,0.95), 0 0 8px rgba(241,201,74,0.25) inset;
+  filter: drop-shadow(0 0 10px rgba(241,201,74,0.55));
+  transform: translateZ(0);
+}

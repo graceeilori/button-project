@@ -336,3 +336,38 @@
   -webkit-mask: radial-gradient(transparent 46%, black 46%, black 52%, transparent 52%);
   filter: blur(8px);
 }
+
+
+/* Highlighted moon glow (if not already present) */
+.moon--highlighted {
+  transition: box-shadow 180ms ease, transform 140ms ease, filter 160ms ease;
+  z-index: 30;
+}
+
+.moon--highlighted img {
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(241,201,74,0.95), 0 0 8px rgba(241,201,74,0.25) inset;
+  filter: drop-shadow(0 0 10px rgba(241,201,74,0.55));
+  transform: translateZ(0);
+}
+
+/* CPSC overlay on the sun when "Computer Science" is selected */
+.cpsc-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  z-index: 40;
+  pointer-events: none;
+  color: #ffffff;
+  font-family: var(--font-jersey, 'Jersey 20', sans-serif);
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 48px;
+  text-shadow:
+    0 0 6px rgba(241,201,74,0.9),
+    0 0 18px rgba(241,201,74,0.45),
+    0 0 36px rgba(241,201,74,0.18);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
