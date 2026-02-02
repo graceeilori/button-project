@@ -84,19 +84,27 @@
 }
 
 .planet-1.selected .planet-core {
-  box-shadow: 0 0 26px rgba(127, 172, 239, 0.7);
+  box-shadow: 0 0 36px rgba(127, 172, 239, 0.9);
+  filter: brightness(1.2);
+  z-index: 5;
 }
 
 .planet-2.selected .planet-core {
-  box-shadow: 0 0 26px rgba(239, 127, 169, 0.7);
+  box-shadow: 0 0 36px rgba(239, 127, 169, 0.9);
+  filter: brightness(1.2);
+  z-index: 5;
 }
 
 .planet-3.selected .planet-core {
-  box-shadow: 0 0 26px rgba(13, 77, 49, 0.7);
+  box-shadow: 0 0 36px rgba(13, 77, 49, 0.95);
+  filter: brightness(1.2);
+  z-index: 5;
 }
 
 .planet-4.selected .planet-core {
-  box-shadow: 0 0 26px rgba(113, 65, 173, 0.7);
+  box-shadow: 0 0 36px rgba(113, 65, 173, 0.95);
+  filter: brightness(1.2);
+  z-index: 5;
 }
 
 .planet-core {
@@ -341,14 +349,14 @@
 /* Highlighted moon glow (if not already present) */
 .moon--highlighted {
   transition: box-shadow 180ms ease, transform 140ms ease, filter 160ms ease;
-  z-index: 30;
+  z-index: 40;
 }
 
 .moon--highlighted img {
   border-radius: 999px;
-  box-shadow: 0 0 20px rgba(241,201,74,0.95), 0 0 8px rgba(241,201,74,0.25) inset;
-  filter: drop-shadow(0 0 10px rgba(241,201,74,0.55));
-  transform: translateZ(0);
+  box-shadow: 0 0 28px rgba(241,201,74,1), 0 0 10px rgba(241,201,74,0.35) inset;
+  filter: drop-shadow(0 0 12px rgba(241,201,74,0.75)) brightness(1.2);
+  transform: scale(1.2) translateZ(0);
 }
 
 /* CPSC overlay on the sun when "Computer Science" is selected */
