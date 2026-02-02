@@ -227,3 +227,110 @@
     position: relative;
     z-index: 1;
 }
+
+/* Spacedock panel personality and interests styles */
+
+.spacedock-personality-container {
+  padding: 16px 20px;
+  color: #dfeef4;
+}
+
+/* Headings */
+.spacedock-heading {
+  font-family: var(--font-space-mono);
+  color: #4fd6e0; 
+  font-size: 1.05rem;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.spacedock-subheading {
+  font-family: var(--font-space-mono);
+  color: #4fd6e0;
+  margin: 18px 0 8px 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Traits list */
+.spacedock-traits {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+
+.spacedock-trait-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.spacedock-trait-row:last-child {
+  border-bottom: none;
+}
+
+.trait-name {
+  color: #cfe7ef;
+  opacity: 0.9;
+  font-size: 0.98rem;
+}
+
+.trait-value {
+  color: #f1c94a; 
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+/* Interests */
+.spacedock-interests {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.interest-bubble {
+  background: rgba(255,255,255,0.03);
+  color: #e6eef2;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: box-shadow 160ms ease, transform 120ms ease, background 160ms ease;
+  font-family: var(--font-space-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.2px;
+  outline: none;
+}
+
+.interest-bubble:hover {
+  transform: translateY(-2px);
+}
+
+.interest-bubble:focus {
+  box-shadow: 0 0 0 3px rgba(79,214,224,0.12);
+}
+
+/* Selected glow */
+.interest-bubble.selected {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-color: rgba(241,201,74,0.9);
+  color: #f1c94a;
+  box-shadow: 0 0 18px rgba(241,201,74,0.15), 0 0 6px rgba(241,201,74,0.06) inset;
+}
+
+/* moon glow */
+.moon--highlighted {
+  transition: box-shadow 180ms ease, transform 140ms ease, filter 160ms ease;
+  z-index: 30;
+}
+
+.moon--highlighted img {
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(241,201,74,0.95), 0 0 8px rgba(241,201,74,0.25) inset;
+  filter: drop-shadow(0 0 10px rgba(241,201,74,0.55));
+  transform: translateZ(0);
+}

@@ -10,6 +10,7 @@ interface PlanetProps {
   selected?: boolean;  // Visual glow on this planet
   paused?: boolean;    // Animation paused (orbit stopped)
   onSelect?: () => void;
+  highlightedMoonIndex?: number | null; // 0-based index of moon to highlight
 }
 
 /**
@@ -26,6 +27,7 @@ export function Planet({
   selected = false,
   paused = false,
   onSelect,
+  highlightedMoonIndex = null,
 }: PlanetProps) {
   return (
     <button
@@ -40,16 +42,16 @@ export function Planet({
       <div className="moons">
         {/* Visual orbit ring for moons */}
         <div className="planet_orbit"></div>
-        <div className="moon moon-0">
+        <div className={`moon moon-0 ${highlightedMoonIndex === 0 ? "moon--highlighted" : ""}`}>
           <img src={moons[0]} alt="" width={24} height={24} />
         </div>
-        <div className="moon moon-1">
+        <div className={`moon moon-1 ${highlightedMoonIndex === 1 ? "moon--highlighted" : ""}`}>
           <img src={moons[1]} alt="" width={24} height={24} />
         </div>
-        <div className="moon moon-2">
+        <div className={`moon moon-2 ${highlightedMoonIndex === 2 ? "moon--highlighted" : ""}`}>
           <img src={moons[2]} alt="" width={24} height={24} />
         </div>
-        <div className="moon moon-3">
+        <div className={`moon moon-3 ${highlightedMoonIndex === 3 ? "moon--highlighted" : ""}`}>
           <img src={moons[3]} alt="" width={24} height={24} />
         </div>
       </div>
