@@ -184,6 +184,122 @@ export default function SolarSystem() {
           {selectedPlanets.has(3) && <p>• Caleb selected</p>}
           {selectedPlanets.has(4) && <p>• JJ selected</p>}
         </div>
+
+        {/* SINGLE-SELECTION: show Personality + Interests when exactly one planet selected */}
+        {selectedCount === 1 && (() => {
+          const selectedId = Array.from(selectedPlanets)[0] as number;
+
+          const planetData: Record<number, {
+            name: string;
+            interests: string[];
+            traits: {
+              Extraversion: string;
+              Conscientiousness: string;
+              Openness: string;
+              Agreeableness: string;
+              Emotionality: string;
+            };
+          }> = {
+            1: {
+              name: "Chris",
+              interests: ["Reading", "Call Of Duty", "Girlfriend", "Snowboarding"],
+              traits: {
+                Extraversion: "Moderate",
+                Conscientiousness: "Moderate",
+                Openness: "Moderate",
+                Agreeableness: "Moderate",
+                Emotionality: "Moderate",
+              },
+            },
+            2: {
+              name: "Grace",
+              interests: ["Call Of Duty", "Piano", "Baking", "Sickle Cell"],
+              traits: {
+                Extraversion: "Low",
+                Conscientiousness: "Moderate",
+                Openness: "Low",
+                Agreeableness: "Moderate",
+                Emotionality: "Moderate",
+              },
+            },
+            3: {
+              name: "Caleb",
+              interests: ["Snowboarding", "Jhonston Canyon", "Piano", "Titanium Shoulder"],
+              traits: {
+                Extraversion: "Moderate",
+                Conscientiousness: "Moderate",
+                Openness: "Moderate",
+                Agreeableness: "Moderate",
+                Emotionality: "Moderate",
+              },
+            },
+            4: {
+              name: "JJ",
+              interests: ["Baking", "Girlfriend", "Trans", "Jhonston Canyon"],
+              traits: {
+                Extraversion: "Moderate",
+                Conscientiousness: "Low",
+                Openness: "Moderate",
+                Agreeableness: "Moderate",
+                Emotionality: "Moderate",
+              },
+            },
+          };
+
+          const InterestPanel = () => {
+            const [selectedInterest, setSelectedInterest] = useState<string | null>(null);
+            const data = planetData[selectedId];
+            const interests = data?.interests ?? [];
+            const t = data?.traits;
+
+            return (
+              <div className="spacedock-personality-container" style={{ fontFamily: 'var(--font-space-mono)' }}>
+                <h3 className="spacedock-heading">Personality Traits</h3>
+
+                <div className="spacedock-traits">
+                  <div className="spacedock-trait-row">
+                    <div className="trait-name">Extraversion</div>
+                    <div className="trait-value">{t?.Extraversion}</div>
+                  </div>
+                  <div className="spacedock-trait-row">
+                    <div className="trait-name">Conscientiousness</div>
+                    <div className="trait-value">{t?.Conscientiousness}</div>
+                  </div>
+                  <div className="spacedock-trait-row">
+                    <div className="trait-name">Openness</div>
+                    <div className="trait-value">{t?.Openness}</div>
+                  </div>
+                  <div className="spacedock-trait-row">
+                    <div className="trait-name">Agreeableness</div>
+                    <div className="trait-value">{t?.Agreeableness}</div>
+                  </div>
+                  <div className="spacedock-trait-row">
+                    <div className="trait-name">Emotionality</div>
+                    <div className="trait-value">{t?.Emotionality}</div>
+                  </div>
+                </div>
+
+                <h4 className="spacedock-subheading">Interests/Traits</h4>
+                <div className="spacedock-interests" role="list">
+                  {interests.map((interest) => (
+                    <button
+                      key={interest}
+                      type="button"
+                      role="button"
+                      aria-pressed={selectedInterest === interest}
+                      className={`interest-bubble ${selectedInterest === interest ? "selected" : ""}`}
+                      onClick={() => setSelectedInterest(prev => (prev === interest ? null : interest))}
+                    >
+                      {interest}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          };
+
+          return <InterestPanel />;
+        })()}
       </SpacedockPanel>
     </div>
   );
