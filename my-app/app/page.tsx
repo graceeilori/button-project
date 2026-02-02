@@ -454,7 +454,7 @@ export default function SolarSystem() {
                   </div>
                 </div>
 
-                <h4 className="spacedock-subheading">Interests</h4>
+                <h4 className="spacedock-subheading">Interests/About</h4>
                 <div className="spacedock-interests" role="list">
                   {interestsList.map((interest) => (
                     <button
