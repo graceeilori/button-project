@@ -371,3 +371,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* spacer below the planet/orbit area */
+.page-bottom-spacer {
+  height: 100px;         
+  width: 100%;
+  display: block;
+  pointer-events: none; 
+  background: transparent; 
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}

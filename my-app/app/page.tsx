@@ -363,6 +363,8 @@ export default function SolarSystem() {
             highlightedMoonIndex={getHighlightedMoonIndex(4)}
           />
         </div>
+        {/* bottom spacer */}
+        <div className="page-bottom-spacer" aria-hidden="true" />
       </div>
 
       {/* Spacedock Panel - appears when any planet is selected */}
