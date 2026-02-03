@@ -23,7 +23,7 @@ export default function SolarSystem() {
       name: "Chris",
       interests: ["Reading", "Call Of Duty", "Girlfriend", "Snowboarding"],
       traits: {
-        Extraversion: "Moderate",
+        Extraversion: "Low",
         Conscientiousness: "Moderate",
         Openness: "Moderate",
         Agreeableness: "Moderate",
