@@ -32,7 +32,7 @@ export default function SolarSystem() {
     },
     2: {
       name: "Grace",
-      interests: ["Call Of Duty", "Piano", "Baking", "Sickle Cell"],
+      interests: ["Call Of Duty", "Piano", "Baking", "Mutant"],
       traits: {
         Extraversion: "Low",
         Conscientiousness: "Moderate",
@@ -68,7 +68,7 @@ export default function SolarSystem() {
   // Moon Mapping
   const interestToMoonMap: Record<number, Record<string, number>> = {
     1: { "Reading": 0, "Call Of Duty": 1, "Girlfriend": 2, "Snowboarding": 3 },
-    2: { "Call Of Duty": 1, "Piano": 3, "Baking": 0, "Sickle Cell": 2 },
+    2: { "Call Of Duty": 1, "Piano": 3, "Baking": 0, "Mutant": 2 },
     3: { "Snowboarding": 2, "Jhonston Canyon": 0, "Piano": 1, "Titanium Shoulder": 3 },
     4: { "Baking": 2, "Girlfriend": 3, "Trans": 0, "Jhonston Canyon": 1 },
   };
@@ -192,8 +192,8 @@ export default function SolarSystem() {
       selectedSharedInterest !== null
         ? selectedSharedInterest
         : selectedInterest && selectedInterest.planetId === planetId
-        ? selectedInterest.interest
-        : null;
+          ? selectedInterest.interest
+          : null;
 
     if (!interestToUse) return null;
 
